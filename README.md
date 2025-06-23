@@ -18,6 +18,15 @@ This is crucial for shared data (like the bar variable), where multiple threads 
 With synchronized, Java ensures that each bar++ is executed fully before another thread can enter the method.
 This prevents interference and guarantees the final result is exactly 20000.
 
+## Difference between synchronized void and synchronized(this) versions
+
+In the "public synchronized void baz()" version:
+This is a synchronized instance method. It implicitly locks on the current object (this), ensuring that only one thread at a time can execute the entire method on that object.
+
+In the "synchronized(this)" version:
+This version locks explicitly on the current object (this), but only around the block inside the method. It achieves the same effect in this case, since the whole method is just that one line.
+synchronized(this) blocks are useful when you only want to lock part of a method or use a different lock object.
+
 
 
 
